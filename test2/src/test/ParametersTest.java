@@ -12,7 +12,7 @@ public class ParametersTest
 {
 
 
-    private Calculator calculator = null;
+    //private Calculator calculator = null;
 
     @Test
     @Source("Data.xlsx")

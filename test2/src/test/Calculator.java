@@ -5,13 +5,13 @@ public class Calculator
     public int add(int a, int b)
     {
 
-    	System.out.println("açš„å€¼:"+a+",bçš„å€¼:"+b+",a+b="+(a+b));
+    	System.out.println("aµÄÖµ:"+a+",bµÄÖµ:"+b+",a+b="+(a+b));
         return a + b;
     }
 
     public int subtract(int a, int b)
     {
-    	System.out.println("açš„å€¼:"+a+",bçš„å€¼:"+b+","+a+"-"+b+"="+(a-b));
+    	System.out.println("aµÄÖµ:"+a+",bµÄÖµ:"+b+","+a+"-"+b+"="+(a-b));
         return a - b;
     }
 
@@ -24,7 +24,7 @@ public class Calculator
     {
         if (0 == b)
         {
-            throw new Exception("é™¤æ•°ä¸èƒ½ä¸º0");
+            throw new Exception("³ıÊı²»ÄÜÎª0");
         }
         return a / b;
     }
