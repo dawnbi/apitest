@@ -3,7 +3,8 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="test">
+              as the first entry and export the buildfile again. -->
+              <project basedir="." default="ParametersTest" name="test">
     <property environment="env"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
@@ -15,24 +16,6 @@
     </path>
     <path id="test.classpath">
         <pathelement location="bin"/>
-        <pathelement location="libs/commons-beanutils.jar"/>
-        <pathelement location="libs/commons-collections-3.2.jar"/>
-        <pathelement location="libs/commons-httpclient.jar"/>
-        <pathelement location="libs/commons-lang-2.6-sources.jar"/>
-        <pathelement location="libs/commons-lang-2.6.jar"/>
-        <pathelement location="libs/ezmorph-1.0.jar"/>
-        <pathelement location="libs/json-lib-2.4-jdk15.jar"/>
-        <pathelement location="libs/commons-codec-1.9.jar"/>
-        <pathelement location="libs/commons-logging-1.2.jar"/>
-        <pathelement location="libs/fluent-hc-4.5.1.jar"/>
-        <pathelement location="libs/httpclient-4.5.1.jar"/>
-        <pathelement location="libs/httpclient-cache-4.5.1.jar"/>
-        <pathelement location="libs/httpclient-win-4.5.1.jar"/>
-        <pathelement location="libs/httpcore-4.4.3.jar"/>
-        <pathelement location="libs/httpmime-4.5.1.jar"/>
-        <pathelement location="libs/jna-4.1.0.jar"/>
-        <pathelement location="libs/jna-platform-4.1.0.jar"/>
-        <pathelement location="libs/commons-lang3-3.4.jar"/>
         <path refid="JUnit 4.libraryclasspath"/>
         <pathelement location="libs/antlr-2.7.7.jar"/>
         <pathelement location="libs/antlr-runtime-3.3.jar"/>
@@ -97,11 +80,6 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="APIHttpClient">
-        <java classname="test.APIHttpClient" failonerror="true" fork="yes">
-            <classpath refid="test.classpath"/>
-        </java>
-    </target>
     <target name="ParametersTest">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
@@ -109,11 +87,6 @@
             <test name="test.ParametersTest" todir="${junit.output.dir}"/>
             <classpath refid="test.classpath"/>
         </junit>
-    </target>
-    <target name="test001">
-        <java classname="test.test001" failonerror="true" fork="yes">
-            <classpath refid="test.classpath"/>
-        </java>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
