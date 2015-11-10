@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project name="jmeterTest" default="all" basedir=".">
+	<tstamp>
+        <format property="time" pattern="yyyyMMddhhmm" />
+    </tstamp>
+
+	<property name="jmeter.home" value="D:\software\apache-jmeter-2.8" />
+
+	<property name="jmeter.result.jtl.dir" value="D:\software\apache-jmeter-2.8\jmeterwork\resultLog\jtl" />
+
+	<property name="jmeter.result.html.dir" value="D:\software\apache-jmeter-2.8\jmeterwork\resultLog\html" />
+  
+	<property name="ReportName" value="TestReport" />
+	<property name="jmeter.result.jtlName" value="${jmeter.result.jtl.dir}/${ReportName}${time}.jtl" />
+	<property name="jmeter.result.htmlName" value="${jmeter.result.html.dir}/${ReportName}${time}.html" />
+	
+	<target name="all">
+		<antcall target="test" />
+		<antcall target="report" />
+	</target>
+	
+	<target name="test">
+		<taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" /> 
+		<jmeter jmeterhome="${jmeter.home}" resultlog="${jmeter.result.jtlName}">
+		<testplans dir="D:\software\apache-jmeter-2.8\jmeterwork" includes="*.jmx" />
+		</jmeter>
+	</target>
+		
+	<target name="report">
+		<xslt in="${jmeter.result.jtlName}"
+		      out="${jmeter.result.htmlName}"
+		      style="${jmeter.home}/extras/jmeter-results-detail-report_21.xsl" />
+		
+
+        <copy todir="${jmeter.result.html.dir}">
+            <fileset dir="${jmeter.home}/extras">
+                <include name="collapse.png" />
+                <include name="expand.png" />
+            </fileset>
+        </copy>
+	</target>
+</project>
